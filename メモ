@@ -11,5 +11,10 @@ import torch; print(torch.__version__, torch.cuda.is_available())
 poetry add llvmlite # これを先にやっておかないとlibrosaなどが入らない。なぜ？？？
 poetry add scipy==1.13.1 librosa==0.10.2 huggingface-hub munch einops descript-audio-codec gradio pydub resemblyzer jiwer transformers FreeSimpleGUI soundfile sounddevice modelscope funasr
 
-poetry run python inference.py --source test_data/emotion[A]_072A.wav --target test_data/RECITATION324_127.wav --output test_output --diffusion-steps 25  --length-adjust 1.0 --inference-cfg-rate 0.7 --f0-condition False  --auto-f0-adjust False  --semi-tone-shift 0  --checkpoint test_data/DiT_uvit_tat_xlsr_ema.pth --config .\configs\presets\config_dit_mel_seed_uvit_xlsr_tiny.yml --fp16 True
-poetry run python inference.py --target test_data/emotion[A]_072A.wav --source test_data/RECITATION324_127.wav --output test_output --diffusion-steps 25  --length-adjust 1.0 --inference-cfg-rate 0.7 --f0-condition False  --auto-f0-adjust False  --semi-tone-shift 0  --checkpoint test_data/DiT_uvit_tat_xlsr_ema.pth --config .\configs\presets\config_dit_mel_seed_uvit_xlsr_tiny.yml --fp16 True
+poetry run python inference.py --source test_data/emotion[A]_072A.wav --target test_data/RECITATION324_127.wav --output test_output --diffusion-steps 25  --length-adjust 1.0 --inference-cfg-rate 0.7 --f0-condition False  --auto-f0-adjust False  --semi-tone-shift 0  --checkpoint-path test_data/DiT_uvit_tat_xlsr_ema.pth --config-path .\configs\presets\config_dit_mel_seed_uvit_xlsr_tiny.yml --fp16 True
+poetry run python inference.py --target test_data/emotion[A]_072A.wav --source test_data/RECITATION324_127.wav --output test_output --diffusion-steps 25  --length-adjust 1.0 --inference-cfg-rate 0.7 --f0-condition False  --auto-f0-adjust False  --semi-tone-shift 0  --checkpoint-path test_data/DiT_uvit_tat_xlsr_ema.pth --config-path .\configs\presets\config_dit_mel_seed_uvit_xlsr_tiny.yml --fp16 True
+
+
+poetry run python app_vc.py --checkpoint test_data/DiT_uvit_tat_xlsr_ema.pth --config .\configs\presets\config_dit_mel_seed_uvit_xlsr_tiny.yml --fp16 True
+
+poetry run python app_svc.py --checkpoint test_data/DiT_uvit_tat_xlsr_ema.pth --config .\configs\presets\config_dit_mel_seed_uvit_xlsr_tiny.yml --fp16 True
