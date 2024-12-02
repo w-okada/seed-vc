@@ -21,3 +21,7 @@ reconstructed/
 .python-version
 ruff.log
 /configs/inuse/
+
+# added
+test_data/
+test_output/
